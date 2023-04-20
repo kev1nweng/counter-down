@@ -1,0 +1,151 @@
+/* Noto Sans SC Regular */
+@font-face {
+    font-family: 'Noto Sans SC';
+    font-style: normal;
+    src: url('./fonts/noto-sans-sc-regular.woff2') format('woff2'),
+         url('./fonts/noto-sans-sc-regular.woff') format('woff'),
+         url('./fonts/noto-sans-sc-regular.ttf') format('truetype');
+}
+
+  /* Cairo Regular */
+@font-face {
+    font-family: 'Cairo';
+    font-style: normal;
+    src: url('./fonts/cairo-regular.woff2') format('woff2'),
+         url('./fonts/cairo-regular.woff') format('woff'),
+         url('./fonts/cairo-regular.ttf') format('truetype');
+}
+
+@keyframes rotateBg {
+    0% {
+        background:
+        linear-gradient(rgb(0, 8, 8), transparent),
+        linear-gradient(-45deg, rgb(8, 0, 8), transparent),
+        linear-gradient(45deg, rgb(8, 8, 0), transparent);
+    }
+    33% {
+        background:
+        linear-gradient(rgb(8, 0, 8), transparent),
+        linear-gradient(-45deg, rgb(8, 8, 0), transparent),
+        linear-gradient(45deg, rgb(0, 8, 8), transparent);
+    }
+    66% {
+        background:
+        linear-gradient(rgb(8, 8, 0), transparent),
+        linear-gradient(-45deg, rgb(0, 8, 8), transparent),
+        linear-gradient(45deg, rgb(8, 0, 8), transparent);
+    }
+    100% {
+        background:
+        linear-gradient(rgb(0, 8, 8), transparent),
+        linear-gradient(-45deg, rgb(8, 0, 8), transparent),
+        linear-gradient(45deg, rgb(8, 8, 0), transparent);
+    }
+}
+
+#quote {
+    margin: auto;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 4vw;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    color: white;
+    font-weight: lighter;
+    color: rgba(255, 255, 255, 0.75);
+    width: 90%;
+}
+
+#quote.visible {
+    opacity: 1;
+}
+
+#countdown {
+	font-size: 48px;
+	text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    color: white;
+    font-size: 14vw;
+    line-height: .80em;
+}
+
+#countdown.visible {
+    opacity: 1;
+}
+
+#fakePadding {
+    height: 35vh;
+}
+
+#stars {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.container {
+    padding-top: 35vh;
+}
+
+.glow {
+    text-shadow: 0 0 20px #ffffff79;
+    -webkit-appearance: none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Cairo', 'Noto Sans SC';
+    height: 100%;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #bdc3c7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #091625, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #091625, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
+
+a {
+    margin: auto;
+    text-align: center;
+}
+
+b {
+    font-size: 4vw;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+footer {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    line-height: .95em;
+    color:rgba(240, 248, 255, 0.05);
+}
