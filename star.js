@@ -1,15 +1,17 @@
+window.starShown = false;
+
 window.onload = function () {
   const canvas = document.getElementById("stars");
   const ctx = canvas.getContext("2d");
   let stars = [];
   let numStars = 100;
-  canvas.width = window.innerWidth / 2;
-  canvas.height = window.innerHeight / 2;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
   for (let i = 0; i < numStars; i++) {
     stars.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      radius: Math.random() * 2,
+      radius: Math.random() * 4,
       alpha: Math.random() * 0.5 + 0.5,
     });
   }
@@ -30,9 +32,8 @@ window.onload = function () {
       ctx.fill();
     }
   }
-  const fps = 6; // 设置帧率为30
+  const fps = 12; 
   const interval = 1000 / fps; // 计算每帧间隔时间
-
   let then = Date.now();
   function animate() {
     requestAnimationFrame(animate);
@@ -42,6 +43,10 @@ window.onload = function () {
       // 如果时间间隔达到限定帧率
       then = now - (delta % interval); // 更新时间标记
       drawStars(); // 进行绘制
+    }
+    if (!starShown) {
+      document.getElementById("stars").classList.add("visible");
+      starShown = true;
     }
   }
   animate();
