@@ -143,6 +143,6 @@ function fetchQuote(isCountdown = true) {
   document.getElementById("quote").classList.add("visible");
 }
 
-setInterval(countDown, 1000);
+countDown();
 displayMessage();
 setTimeout(fetchQuote, 2000);
