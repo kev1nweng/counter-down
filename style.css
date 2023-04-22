@@ -16,33 +16,6 @@
          url('./fonts/cairo-regular.ttf') format('truetype');
 }
 
-@keyframes rotateBg {
-    0% {
-        background:
-        linear-gradient(rgb(0, 8, 8), transparent),
-        linear-gradient(-45deg, rgb(8, 0, 8), transparent),
-        linear-gradient(45deg, rgb(8, 8, 0), transparent);
-    }
-    33% {
-        background:
-        linear-gradient(rgb(8, 0, 8), transparent),
-        linear-gradient(-45deg, rgb(8, 8, 0), transparent),
-        linear-gradient(45deg, rgb(0, 8, 8), transparent);
-    }
-    66% {
-        background:
-        linear-gradient(rgb(8, 8, 0), transparent),
-        linear-gradient(-45deg, rgb(0, 8, 8), transparent),
-        linear-gradient(45deg, rgb(8, 0, 8), transparent);
-    }
-    100% {
-        background:
-        linear-gradient(rgb(0, 8, 8), transparent),
-        linear-gradient(-45deg, rgb(8, 0, 8), transparent),
-        linear-gradient(45deg, rgb(8, 8, 0), transparent);
-    }
-}
-
 #quote {
     margin: auto;
     padding-bottom: 20px;
@@ -193,6 +166,6 @@ footer:hover {
 }
 
 footer.bright {
-    color: rgb(0, 0, 255);
-    opacity: 0.5;
+    color: rgb(255, 255, 255, );
+    opacity: 0.35;
 }

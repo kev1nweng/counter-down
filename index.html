@@ -4,9 +4,10 @@
         <title>倒计时</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css?v=230422v3">
-        <script src="script.js?v=230422v3"></script>
-        <script defer src="star.js?v=230422v3"></script>
+        <link rel="stylesheet" href="style.css?v=230422v4">
+        <script src="script.js?v=230422v4"></script>
+        <script defer src="star.js?v=230422v4"></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/eruda/3.0.0/eruda.min.js"></script>
         <script>
             window.starClicked = 0;
             window.brightShown = false;
@@ -38,10 +39,10 @@
             <div id="countdown" class="animated fadeIn glow" onclick="flag()"></div>
         </div>
     </body>
-    <footer id="footer">
-        点击 Quote 重新生成星空。<br /><br />
+    <footer id="footer" onclick="eruda.init()">
+        轻按 Quote 重新生成星空。<br /><br />
         To the one close but far away...<br />
         by kW with love. <br />
-        counter-down 23apr22v3 - Github<br />&nbsp;
+        counter-down 23apr22v4 - Github<br />&nbsp;
     </footer>
 </html>
