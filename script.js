@@ -1,7 +1,7 @@
 let targetDate = new Date("November 5, 2024 00:00:00").getTime();
 
-var positiveSentences = [
-    "你一定能行。",
+var countdownMsg = [
+    "你一定能行！",
     "每一天都是新的开始，昨天的那都不是事",
     "你的努力一定会有回报。",
     "不要放弃，成功就在前方！",
@@ -44,6 +44,8 @@ var positiveSentences = [
     "这个世界上，还有很多人爱着你",
     "👍加油~",
 ];
+
+const countupMsg = [];
 
 // Special text in the last minute
 const messages = [
@@ -121,8 +123,10 @@ function fetchQuote() {
 }
 */
 
-function fetchQuote() {
-    let gotQuote = positiveSentences[Math.floor(Math.random() * positiveSentences.length)];
+function fetchQuote(isCountdown = true) {
+    if (isCountdown) {
+        var gotQuote = countdownMsg[Math.floor(Math.random() * countdownMsg.length)];
+    } else var gotQuote = countupMsg[Math.floor(Math.random() * countupMsg.length)];
     const quoteQuery = document.querySelector('#quote');
     quoteQuery.innerText = gotQuote;
     document.getElementById("quote").classList.add("visible");

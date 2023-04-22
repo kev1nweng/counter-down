@@ -65,8 +65,8 @@
 }
 
 #countdown {
-	font-size: 48px;
-	text-align: center;
+    font-size: 48px;
+    text-align: center;
     opacity: 0;
     transition: opacity 1s ease-in-out;
     -webkit-transition: opacity 1s ease-in-out;
@@ -76,6 +76,7 @@
     color: white;
     font-size: 14vw;
     line-height: .80em;
+    transform-origin: center center;
 }
 
 #countdown.visible {
@@ -94,14 +95,35 @@
     left: 0;
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.25s ease-in-out;
-    -webkit-transition: opacity 0.25s ease-in-out;
-    -moz-transition: opacity 0.25s ease-in-out;
-    -ms-transition: opacity 0.25s ease-in-out;
-    -o-transition: opacity 0.25s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
 }
 
 #stars.visible {
+    opacity: 1;
+}
+
+#brightcover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 0;
+    background: -webkit-linear-gradient(to top, #3f99ff, #abddff);
+    background: linear-gradient(to top, #3f99ff, #abddff); 
+    transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+}
+
+#brightcover.bright {
     opacity: 1;
 }
 
@@ -130,7 +152,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: -3;
     background: -webkit-linear-gradient(to top, #091625, #000000);
     background: linear-gradient(to top, #091625, #000000); 
 }
@@ -156,5 +178,21 @@ footer {
     align-items: center;
     height: auto;
     line-height: .95em;
-    color:rgba(255, 255, 255, 0.1);
+    color:white;
+    opacity: 0.1;
+    transition: opacity 0.25s ease-in-out;
+    -webkit-transition: opacity 0.25s ease-in-out;
+    -moz-transition: opacity 0.25s ease-in-out;
+    -ms-transition: opacity 0.25s ease-in-out;
+    -o-transition: opacity 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+footer:hover {
+    opacity: 0.3;
+}
+
+footer.bright {
+    color: rgb(0, 0, 255);
+    opacity: 0.5;
 }
