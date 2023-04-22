@@ -12,7 +12,7 @@ for (let i = 0; i < numStars; i++) {
     radius: Math.random() * 4,
     alpha: Math.random() * 0.5 + 0.5,
     // vx: Math.random() * 0.2 - 0.1,
-    // vy: Math.random() * 0.2 - 0.1,
+    vy: Math.random() * 0.2 - 0.1,
     shakeRate: 0.002,
   });
 }
@@ -33,7 +33,7 @@ function drawStars() {
     }
     if (brightShown) {
       // star.x += star.vx;
-      // star.y -= star.vy;
+      star.y -= star.vy;
       if (i % 2 == 1) {
         star.x += Math.sin(Date.now() * star.shakeRate / 4) * 2; // 正弦函数平滑移动
       } else {
