@@ -6,7 +6,6 @@ setTimeout(() => {
       "Y29uc29sZS5sb2coIlBsZWFzZSBzdGF5IGFsaXZlLi4uICVjY3V6IHUgYXJlIHRoZSBvbmUuIiwgImNvbG9yOnJnYig1OCwgMTIwLCAyNTUpOyIp"
     )
   );
-  eval(atob("Y29uc29sZS5sb2coIiVjSSBsb3ZlIHUuIiwgImNvbG9yOnJlZDsiKQ"));
 }, 4000);
 
 const countdownMsg = [
