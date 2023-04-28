@@ -31,6 +31,7 @@
     font-weight: lighter;
     color: rgba(255, 255, 255, 0.75);
     width: 90%;
+    z-index: 3;
 }
 
 #quote.visible {
@@ -53,10 +54,11 @@
     font-size: 14vw;
     line-height: .80em;
     transform-origin: center center;
+    z-index: 2;
 }
 
 #countdown.bright {
-    text-shadow: 0 0 20px rgb(17, 51, 31);
+    text-shadow: 0 0 20px rgb(37, 100, 63);
 }
 
 #countdown.visible {
@@ -177,7 +179,7 @@ footer.bright {
     opacity: 0.35;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
     #countdown {
         font-size: 7vw;
     }

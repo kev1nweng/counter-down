@@ -7,21 +7,26 @@ function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
-window.addEventListener('resize', resizeCanvas, false);
+window.addEventListener("resize", resizeCanvas, false);
+window.addEventListener("orientationchange", resizeCanvas, false);
+window.addEventListener("orientationchange", generateStars, false);
 window.onload = resizeCanvas();
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-for (let i = 0; i < numStars; i++) {
-  stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 4,
-    alpha: Math.random() * 0.5 + 0.5,
-    // vx: Math.random() * 0.2 - 0.1,
-    vy: Math.random() * 2,
-    shakeRate: 0.0025,
-  });
+function generateStars() {
+  for (let i = 0; i < numStars; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 4,
+      alpha: Math.random() * 0.5 + 0.5,
+      // vx: Math.random() * 0.2 - 0.1,
+      vy: Math.random() * 2,
+      shakeRate: 0.0025,
+    });
+  }
 }
+generateStars();
 var alphaFrozen = false;
 // 绘制星点
 function drawStars() {
@@ -41,9 +46,9 @@ function drawStars() {
       // star.x += star.vx;
       star.y -= star.vy;
       if (i % 2 == 1) {
-        star.x += Math.sin(Date.now() * star.shakeRate / 4) * 2; // 正弦函数平滑移动
+        star.x += Math.sin((Date.now() * star.shakeRate) / 4) * 2; // 正弦函数平滑移动
       } else {
-        star.x -= Math.sin(Date.now() * star.shakeRate / 4) * 2; // 正弦函数平滑移动
+        star.x -= Math.sin((Date.now() * star.shakeRate) / 4) * 2; // 正弦函数平滑移动
       }
       star.y -= 5;
       /*
@@ -67,7 +72,7 @@ function drawStars() {
       alphaFrozen = false;
       ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
       ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
-    };
+    }
     ctx.fill();
   }
 }
@@ -76,7 +81,11 @@ let then = Date.now();
 function animate() {
   requestAnimationFrame(animate);
   let interval = 1000 / fps; // 计算每帧间隔时间
-  if (brightShown) {fps = 30} else {fps = 12};
+  if (brightShown) {
+    fps = 30;
+  } else {
+    fps = 12;
+  }
   const now = Date.now();
   const delta = now - then;
   if (delta > interval) {
@@ -85,7 +94,9 @@ function animate() {
     drawStars(); // 进行绘制
   }
   if (!starShown) {
-    setTimeout(() => {document.getElementById("stars").classList.add("visible");}, 500)
+    setTimeout(() => {
+      document.getElementById("stars").classList.add("visible");
+    }, 500);
     starShown = true;
   }
 }
