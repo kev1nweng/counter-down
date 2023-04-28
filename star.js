@@ -3,6 +3,12 @@ const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 let stars = [];
 let numStars = 115;
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas, false);
+window.onload = resizeCanvas();
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 for (let i = 0; i < numStars; i++) {
@@ -12,8 +18,8 @@ for (let i = 0; i < numStars; i++) {
     radius: Math.random() * 4,
     alpha: Math.random() * 0.5 + 0.5,
     // vx: Math.random() * 0.2 - 0.1,
-    vy: Math.random() * 0.2 - 0.1,
-    shakeRate: 0.002,
+    vy: Math.random() * 2,
+    shakeRate: 0.0025,
   });
 }
 var alphaFrozen = false;
@@ -55,7 +61,7 @@ function drawStars() {
     ctx.beginPath();
     if (brightShown) {
       alphaFrozen = true;
-      ctx.fillStyle = `rgba(94, 132, 255, ${alpha})`;
+      ctx.fillStyle = `rgba(75, 141, 44, ${alpha})`;
       ctx.arc(star.x, star.y, star.radius * 2, 0, 2 * Math.PI);
     } else {
       alphaFrozen = false;
@@ -79,7 +85,7 @@ function animate() {
     drawStars(); // 进行绘制
   }
   if (!starShown) {
-    document.getElementById("stars").classList.add("visible");
+    setTimeout(() => {document.getElementById("stars").classList.add("visible");}, 500)
     starShown = true;
   }
 }

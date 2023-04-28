@@ -37,8 +37,11 @@
     opacity: 1;
 }
 
+#quote.bright {
+    text-shadow: 0 0 20px rgb(17, 51, 31);
+}
+
 #countdown {
-    font-size: 48px;
     text-align: center;
     opacity: 0;
     transition: opacity 1s ease-in-out;
@@ -50,6 +53,10 @@
     font-size: 14vw;
     line-height: .80em;
     transform-origin: center center;
+}
+
+#countdown.bright {
+    text-shadow: 0 0 20px rgb(17, 51, 31);
 }
 
 #countdown.visible {
@@ -87,8 +94,8 @@
     height: 100%;
     z-index: -2;
     opacity: 0;
-    background: -webkit-linear-gradient(to top, #3f99ff, #abddff);
-    background: linear-gradient(to top, #3f99ff, #abddff); 
+    background: -webkit-linear-gradient(to top, #4a8e23, #b1ffb1);
+    background: linear-gradient(to top, #4a8e23, #b1ffb1);
     transition: opacity 0.5s ease-in-out;
     -webkit-transition: opacity 0.5s ease-in-out;
     -moz-transition: opacity 0.5s ease-in-out;
@@ -101,7 +108,7 @@
 }
 
 .container {
-    padding-top: 35vh;
+    padding-top: 32vh;
 }
 
 .glow {
@@ -168,4 +175,19 @@ footer:hover {
 footer.bright {
     color: rgb(255, 255, 255, );
     opacity: 0.35;
+}
+
+@media screen and (min-width: 800px) {
+    #countdown {
+        font-size: 7vw;
+    }
+    #quote {
+        font-size: 2vw;
+    }
+    b {
+        font-size: 2vw;
+    }
+    .container {
+        padding-top: 30vh;
+    }
 }

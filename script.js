@@ -27,7 +27,6 @@ const countdownMsg = [
   "永远不要放弃对未来的憧憬！",
   "不要被困难击倒，坚持到底！",
   "不要停下脚步，继续前行！",
-  "每一次的努力都是一次积累。",
   "困难是暂时的，坚持是永恒的！",
   "相信自己，你的能力无限。",
   "做自己的主人，掌握自己的命运。",
@@ -38,6 +37,9 @@ const countdownMsg = [
   "相信自己，你拥有改变世界的力量。",
   "这个世界上，还有很多人爱着你。",
   "👍加油~",
+  "真心希望你可以健康快乐地活着鸭！",
+  "碰上什么破事，过了 24 小时还不得到明天吗",
+  "还真就和这世界杠上了！",
 ];
 
 const countupMsg = [];
@@ -65,7 +67,9 @@ function countDown() {
   let formattedTime = `${years}<b>年</b> ${months}<b>月</b> ${days}<b>日</b><br>${hours}<b>小时</b> ${minutes}<b>分钟</b> ${seconds}<b>秒</b>`;
 
   if (!counterShown) {
-    document.getElementById("countdown").classList.add("visible");
+    setTimeout(() => {
+      document.getElementById("countdown").classList.add("visible");
+    }, 1000);
     counterShown = true;
   }
 
@@ -87,6 +91,7 @@ function countDown() {
   requestAnimationFrame(countDown);
 }
 
+// TODO: CountUp
 function countUp() {
   let now = new Date().getTime();
   let elapsedTime = now - targetDate;
@@ -118,7 +123,7 @@ function displayMessage() {
   setTimeout(displayMessage, 5000);
 }
 
-/*
+/* online quote
 function fetchQuote() {
     fetch('https://v1.hitokoto.cn/?c=k')
     .then(response => response.json())
@@ -139,9 +144,13 @@ function fetchQuote(isCountdown = true) {
     var gotQuote = countupMsg[Math.floor(Math.random() * countupMsg.length)];
   const quoteQuery = document.querySelector("#quote");
   quoteQuery.innerText = gotQuote;
-  document.getElementById("quote").classList.add("visible");
+  setTimeout(() => {
+    document.getElementById("quote").classList.add("visible");
+  }, 2000);
 }
 
 countDown();
 displayMessage();
-setTimeout(fetchQuote, 2000);
+fetchQuote();
+
+// odvDZ288Fxg24x1HsWLtdVVxiPHg1W5huaX3ZHnsx
