@@ -3,17 +3,13 @@ const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 let stars = [];
 let numStars = 115;
+
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
-window.addEventListener("resize", resizeCanvas, false);
-window.addEventListener("orientationchange", resizeCanvas, false);
-window.addEventListener("orientationchange", generateStars, false);
-window.onload = resizeCanvas();
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
 function generateStars() {
+  stars = [];
   for (let i = 0; i < numStars; i++) {
     stars.push({
       x: Math.random() * canvas.width,
@@ -26,8 +22,16 @@ function generateStars() {
     });
   }
 }
+
+window.addEventListener("resize", resizeCanvas, false);
+window.addEventListener("orientationchange", resizeCanvas, false);
+window.addEventListener("orientationchange", generateStars, false);
+window.onload = resizeCanvas();
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 generateStars();
 var alphaFrozen = false;
+
 // 绘制星点
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);

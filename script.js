@@ -1,3 +1,4 @@
+window.debugMode = false;
 let targetDate = new Date("November 5, 2024 00:00:00").getTime();
 
 setTimeout(() => {
@@ -41,6 +42,10 @@ const countdownMsg = [
   "碰上什么破事，过了 24 小时还不得到明天吗",
   "还真就和这世界杠上了！",
 ];
+
+if (debugMode) {
+  countdownMsg = [];
+}
 
 const countupMsg = [];
 
