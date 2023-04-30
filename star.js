@@ -37,7 +37,7 @@ function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < numStars; i++) {
     let star = stars[i];
-    let baseAlpha = 0.3;
+    let baseAlpha = 0.2;
     if (!alphaFrozen) {
       alpha = baseAlpha + Math.random() * 0.2;
     } else {
@@ -55,7 +55,7 @@ function drawStars() {
         star.x -= Math.sin((Date.now() * star.shakeRate) / 4) * 2; // 正弦函数平滑移动
       }
       star.y -= 5;
-      /*
+      /* // TODO: X axis edge detection
       if (star.x + star.radius * 2 < 0) {
         star.x = canvas.width + star.radius * 2;
       }
@@ -74,13 +74,39 @@ function drawStars() {
       ctx.arc(star.x, star.y, star.radius * 2, 0, 2 * Math.PI);
     } else {
       alphaFrozen = false;
+      /* // Legacy
       ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
       ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
+      */
+      let gradient = ctx.createRadialGradient(
+        star.x,
+        star.y,
+        star.radius * 0.25,
+        star.x,
+        star.y,
+        star.radius * 2
+      );
+      gradient.addColorStop(0, `rgba(255, 255, 255, ${alpha})`);
+      gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+      ctx.beginPath();
+      ctx.fillStyle = gradient;
+      ctx.arc(star.x, star.y, star.radius * 2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+      ctx.arc(
+        star.x,
+        star.y,
+        star.radius * 0.5,
+        0,
+        Math.PI * 2
+      );
+      ctx.fill();
     }
     ctx.fill();
   }
 }
-let fps = 12;
+let fps = 10;
 let then = Date.now();
 function animate() {
   requestAnimationFrame(animate);
@@ -88,7 +114,7 @@ function animate() {
   if (brightShown) {
     fps = 30;
   } else {
-    fps = 12;
+    fps = 10;
   }
   const now = Date.now();
   const delta = now - then;

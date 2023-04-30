@@ -70,14 +70,12 @@ function countDown() {
   let minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
   let formattedTime = `${years}<b>年</b> ${months}<b>月</b> ${days}<b>日</b><br>${hours}<b>小时</b> ${minutes}<b>分钟</b> ${seconds}<b>秒</b>`;
-
   if (!counterShown) {
     setTimeout(() => {
       document.getElementById("countdown").classList.add("visible");
     }, 1000);
     counterShown = true;
   }
-
   // 缓存 DOM
   const countdownElement = document.getElementById("countdown");
   // 如果剩余时间小于1分钟，显示存储在数组中的文字
@@ -96,11 +94,9 @@ function countDown() {
   requestAnimationFrame(countDown);
 }
 
-// TODO: CountUp
 function countUp() {
   let now = new Date().getTime();
-  let elapsedTime = now - targetDate;
-
+  let elapsedTime = now - startTime;
   let years = Math.floor(elapsedTime / (1000 * 60 * 60 * 24 * 365));
   let months = Math.floor(
     (elapsedTime % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)
@@ -113,10 +109,10 @@ function countUp() {
   );
   let minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
-
-  // Format
   let formattedTime = `${years}<b>年</b> ${months}<b>月</b> ${days}<b>日</b><br>${hours}<b>小时</b> ${minutes}<b>分钟</b> ${seconds}<b>秒</b>`;
-  document.getElementById("countdown").innerHTML = formattedTime;
+  // 缓存 DOM
+  const countdownElement = document.getElementById("countdown");
+  countdownElement.innerHTML = formattedTime;
 }
 
 function displayMessage() {
