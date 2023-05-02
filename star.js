@@ -38,9 +38,9 @@ function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < numStars; i++) {
     let star = stars[i];
-    let baseAlpha = 0.1;
+    let baseAlpha = 0.4;
     if (!alphaFrozen) {
-      alpha = baseAlpha + Math.random() * 0.4;
+      alpha = baseAlpha + Math.random() * 0.3;
     } else {
       alpha = star.alpha;
     }

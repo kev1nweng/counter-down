@@ -9,6 +9,7 @@ setTimeout(() => {
   );
 }, 4000);
 
+// TODO: Base64 quote encryption
 const countdownMsg = [
   "你一定能行！",
   "每一天都是新的开始，昨天的那都不是事！",
@@ -41,7 +42,7 @@ const countdownMsg = [
   "真心希望你可以健康快乐地活着鸭！",
   "碰上什么破事，过了 24 小时还不得到明天吗",
   "还真就和这世界杠上了！",
-  "你是个独一无二的、有意思的人！",
+  "你是个独一无二的、很有意思的人！",
 ];
 
 if (debugMode) {
@@ -79,22 +80,15 @@ function countDown() {
   }
   // 缓存 DOM
   const countdownElement = document.getElementById("countdown");
-  // 如果剩余时间小于1分钟，显示存储在数组中的文字
-  if (remainingTime < 60000) {
-    // 遍历 messages 数组并将其连接起来
-    const messageHTML = messages.join("");
-    countdownElement.innerHTML = messageHTML;
-  } else {
-    countdownElement.innerHTML = formattedTime;
-  }
+  countdownElement.innerHTML = formattedTime;
   if (remainingTime <= 0) {
-    clearInterval(countdownInterval);
-    setInterval(countUp, 1000);
+    countUp();
     return;
   }
   requestAnimationFrame(countDown);
 }
 
+// TODO
 function countUp() {
   let now = new Date().getTime();
   let elapsedTime = now - startTime;
@@ -114,36 +108,32 @@ function countUp() {
   // 缓存 DOM
   const countdownElement = document.getElementById("countdown");
   countdownElement.innerHTML = formattedTime;
+  requestAnimationFrame(countUp);
 }
 
-function displayMessage() {
-  if (targetDate - new Date().getTime() < 60000) {
-    document.getElementById("countdown").innerHTML =
-      messages[0][currentMessageIndex];
-    currentMessageIndex = (currentMessageIndex + 1) % messages[0].length;
-  }
-  setTimeout(displayMessage, 5000);
-}
+// TODO
+function theLastMinute(name) {return name;}
 
 /* online quote
 function fetchQuote() {
-    fetch('https://v1.hitokoto.cn/?c=k')
-    .then(response => response.json())
-    .then(data => {
-        const quoteQuery = document.querySelector('#quote');
-        quoteQuery.innerText = data.hitokoto;
-        document.getElementById("quote").classList.add("visible");
-    })
-    .catch(console.error);
+  fetch('https://v1.hitokoto.cn/?c=k')
+  .then(response => response.json())
+  .then(data => {
+    const quoteQuery = document.querySelector('#quote');
+    quoteQuery.innerText = data.hitokoto;
+    document.getElementById("quote").classList.add("visible");
+  })
+  .catch(console.error);
 }
 */
 
 function fetchQuote(isCountdown = true) {
+  let gotQuote;
   if (isCountdown) {
-    var gotQuote =
+    gotQuote =
       countdownMsg[Math.floor(Math.random() * countdownMsg.length)];
   } else
-    var gotQuote = countupMsg[Math.floor(Math.random() * countupMsg.length)];
+    gotQuote = countupMsg[Math.floor(Math.random() * countupMsg.length)];
   const quoteQuery = document.querySelector("#quote");
   quoteQuery.innerText = gotQuote;
   setTimeout(() => {
@@ -153,7 +143,6 @@ function fetchQuote(isCountdown = true) {
 
 function initialize() {
   countDown();
-  displayMessage();
   fetchQuote();
 }
 
