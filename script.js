@@ -41,6 +41,7 @@ const countdownMsg = [
   "真心希望你可以健康快乐地活着鸭！",
   "碰上什么破事，过了 24 小时还不得到明天吗",
   "还真就和这世界杠上了！",
+  "你是个独一无二的、有意思的人！",
 ];
 
 if (debugMode) {
@@ -150,8 +151,12 @@ function fetchQuote(isCountdown = true) {
   }, 2000);
 }
 
-countDown();
-displayMessage();
-fetchQuote();
+function initialize() {
+  countDown();
+  displayMessage();
+  fetchQuote();
+}
+
+initialize();
 
 // odvDZ288Fxg24x1HsWLtdVVxiPHg1W5huaX3ZHnsx

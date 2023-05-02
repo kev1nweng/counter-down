@@ -8,6 +8,7 @@ function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
+
 function generateStars() {
   stars = [];
   for (let i = 0; i < numStars; i++) {
@@ -37,9 +38,9 @@ function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < numStars; i++) {
     let star = stars[i];
-    let baseAlpha = 0.2;
+    let baseAlpha = 0.1;
     if (!alphaFrozen) {
-      alpha = baseAlpha + Math.random() * 0.2;
+      alpha = baseAlpha + Math.random() * 0.4;
     } else {
       alpha = star.alpha;
     }
@@ -106,7 +107,7 @@ function drawStars() {
     ctx.fill();
   }
 }
-let fps = 10;
+let fps = 12;
 let then = Date.now();
 function animate() {
   requestAnimationFrame(animate);
@@ -114,7 +115,7 @@ function animate() {
   if (brightShown) {
     fps = 30;
   } else {
-    fps = 10;
+    fps = 12;
   }
   const now = Date.now();
   const delta = now - then;
