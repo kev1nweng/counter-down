@@ -7,7 +7,7 @@
          url('./fonts/noto-sans-sc-regular.ttf') format('truetype');
 }
 
-  /* Cairo Regular */
+/* Cairo Regular */
 @font-face {
     font-family: 'Cairo';
     font-style: normal;

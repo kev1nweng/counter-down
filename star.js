@@ -10,6 +10,7 @@ function resizeCanvas() {
 }
 
 function generateStars() {
+  // Initializing the array every time in case of issues when regenerating stars
   stars = [];
   for (let i = 0; i < numStars; i++) {
     stars.push({
@@ -33,14 +34,13 @@ canvas.height = window.innerHeight;
 generateStars();
 var alphaFrozen = false;
 
-// 绘制星点
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < numStars; i++) {
     let star = stars[i];
-    let baseAlpha = 0.4;
+    let baseAlpha = 0.3;
     if (!alphaFrozen) {
-      alpha = baseAlpha + Math.random() * 0.3;
+      alpha = baseAlpha + Math.random() * 0.2;
     } else {
       alpha = star.alpha;
     }
@@ -49,11 +49,15 @@ function drawStars() {
     }
     if (brightShown) {
       // star.x += star.vx;
+      /* 
+      Removing this line cuz randomized x-axis movements can cause 
+      a reduction in the number of stars in long sessions
+      */
       star.y -= star.vy;
       if (i % 2 == 1) {
-        star.x += Math.sin((Date.now() * star.shakeRate) / 4) * 2; // 正弦函数平滑移动
+        star.x += Math.sin((Date.now() * star.shakeRate) / 4) * 2; // Movement smoothing
       } else {
-        star.x -= Math.sin((Date.now() * star.shakeRate) / 4) * 2; // 正弦函数平滑移动
+        star.x -= Math.sin((Date.now() * star.shakeRate) / 4) * 2; // Movement smoothing
       }
       star.y -= 5;
       /* // TODO: X axis edge detection
@@ -75,7 +79,7 @@ function drawStars() {
       ctx.arc(star.x, star.y, star.radius * 2, 0, 2 * Math.PI);
     } else {
       alphaFrozen = false;
-      /* // Legacy
+      /* // Legacy: stars without glow effect
       ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
       ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
       */
@@ -95,23 +99,19 @@ function drawStars() {
       ctx.fill();
       ctx.beginPath();
       ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-      ctx.arc(
-        star.x,
-        star.y,
-        star.radius * 0.5,
-        0,
-        Math.PI * 2
-      );
+      ctx.arc(star.x, star.y, star.radius * 0.5, 0, Math.PI * 2);
       ctx.fill();
     }
     ctx.fill();
   }
 }
+
 let fps = 12;
 let then = Date.now();
+
 function animate() {
   requestAnimationFrame(animate);
-  let interval = 1000 / fps; // 计算每帧间隔时间
+  let interval = 1000 / fps;
   if (brightShown) {
     fps = 30;
   } else {
@@ -120,9 +120,8 @@ function animate() {
   const now = Date.now();
   const delta = now - then;
   if (delta > interval) {
-    // 如果时间间隔达到限定帧率
-    then = now - (delta % interval); // 更新时间标记
-    drawStars(); // 进行绘制
+    then = now - (delta % interval);
+    drawStars();
   }
   if (!starShown) {
     setTimeout(() => {
@@ -131,4 +130,5 @@ function animate() {
     starShown = true;
   }
 }
+
 animate();

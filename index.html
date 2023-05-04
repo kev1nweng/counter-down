@@ -1,51 +1,53 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>倒计时</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css?v=23may02v2">
-        <script defer src="script.js?v=23may02v2"></script>
-        <script defer src="star.js?v=23may02v2"></script>
-        <script src="https://cdn.bootcdn.net/ajax/libs/eruda/3.0.0/eruda.min.js"></script>
-        <script>
-            window.starClicked = 0;
-            window.brightShown = false;
-            function flag() {
-                if (brightShown) {
-                    document.getElementById("brightcover").classList.remove("bright");
-                    document.getElementById("footer").classList.remove("bright");
-                    document.getElementById("quote").classList.remove("bright");
-                    document.getElementById("countdown").classList.remove("bright");
-                    brightShown = false;
-                    return;
-                }
-                if (starClicked == 5) {
-                    starClicked = 0;
-                    document.getElementById("brightcover").classList.add("bright");
-                    document.getElementById("footer").classList.add("bright");
-                    document.getElementById("quote").classList.add("bright");
-                    document.getElementById("countdown").classList.add("bright");
-                    brightShown = true;
-                    console.log("Goin' bright!");
-                    return;
-                }
-                starClicked++;
-                console.log(`${starClicked}/6 taps to bright mode.`);
-            }
-        </script>
-    </head>
-    <body>
-        <canvas id="stars"></canvas>
-        <div id="brightcover"></div>
-        <div class="container">
-            <h1 id="quote" class="glow" onclick="location.reload()">正在加载 Quote</h1>
-            <div id="countdown" class="glow" onclick="flag()"></div>
-        </div>
-    </body>
-    <footer id="footer" onclick="eruda.init()">
-        轻按倒计时上方文字生成一片新的星空!<br /><br />
-        by kW with love. <br />
-        counter-down 23may02v2 - Github<br />&nbsp;
-    </footer>
+  <head>
+    <title>倒计时</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css?v=23may04v1" />
+    <script defer src="script.js?v=23may04v1"></script>
+    <script defer src="star.js?v=23may04v1"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/eruda/3.0.0/eruda.min.js"></script>
+    <script>
+      window.starClicked = 0;
+      window.brightShown = false;
+      function flag() {
+        if (brightShown) {
+          document.getElementById("brightcover").classList.remove("bright");
+          document.getElementById("footer").classList.remove("bright");
+          document.getElementById("quote").classList.remove("bright");
+          document.getElementById("countdown").classList.remove("bright");
+          brightShown = false;
+          return;
+        }
+        if (starClicked == 5) {
+          starClicked = 0;
+          document.getElementById("brightcover").classList.add("bright");
+          document.getElementById("footer").classList.add("bright");
+          document.getElementById("quote").classList.add("bright");
+          document.getElementById("countdown").classList.add("bright");
+          brightShown = true;
+          console.log("Goin' bright!");
+          return;
+        }
+        starClicked++;
+        console.log(`${starClicked}/6 taps to bright mode.`);
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="stars"></canvas>
+    <div id="brightcover"></div>
+    <div class="container">
+      <h1 id="quote" class="glow" onclick="location.reload()">
+        正在加载 Quote
+      </h1>
+      <div id="countdown" class="glow" onclick="flag()"></div>
+    </div>
+  </body>
+  <footer id="footer" onclick="eruda.init()">
+    轻按倒计时上方文字生成一片新的星空!<br /><br />
+    by kW with love. <br />
+    counter-down 23may04v1 - Github<br />&nbsp;
+  </footer>
 </html>
