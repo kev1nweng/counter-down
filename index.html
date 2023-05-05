@@ -2,15 +2,17 @@
 <html>
   <head>
     <title>倒计时</title>
+    <!-- English alt: Countdown -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="style.css?v=23may04v1" />
-    <script defer src="script.js?v=23may04v1"></script>
-    <script defer src="star.js?v=23may04v1"></script>
+    <link rel="stylesheet" href="style.css?v=23may05v1" />
+    <script defer src="script.js?v=23may05v1"></script>
+    <script defer src="star.js?v=23may05v1"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/eruda/3.0.0/eruda.min.js"></script>
     <script>
       window.starClicked = 0;
       window.brightShown = false;
+      window.menuShown = false;
       function flag() {
         if (brightShown) {
           document.getElementById("brightcover").classList.remove("bright");
@@ -33,21 +35,36 @@
         starClicked++;
         console.log(`${starClicked}/6 taps to bright mode.`);
       }
+      function toggleMenu() {
+        if (!menuShown) {
+          document.getElementById("tweaksMenu").classList.add("visible");
+          menuShown = true;
+        } else {
+          document.getElementById("tweaksMenu").classList.remove("visible");
+          menuShown = false;
+        }
+      }
     </script>
   </head>
   <body>
     <canvas id="stars"></canvas>
     <div id="brightcover"></div>
     <div class="container">
-      <h1 id="quote" class="glow" onclick="location.reload()">
+      <h1 id="quote" class="glow" onclick="location.reload();">
         正在加载 Quote
+        <!-- English alt: Loading quote -->
       </h1>
       <div id="countdown" class="glow" onclick="flag()"></div>
     </div>
+    <div id="tweaksMenu" onclick="">
+      <h1>Tweaks Menu</h1>
+      <a onclick="toggleMenu();" style="opacity: 0.5; padding-top: 300px;">CLOSE</a>
+    </div>
   </body>
-  <footer id="footer" onclick="eruda.init()">
+  <footer id="footer" onclick="toggleMenu();eruda.init();">
     轻按倒计时上方文字生成一片新的星空!<br /><br />
+    <!-- English alt: Click on the quote to<br />generate a new starry sky! -->
     by kW with love. <br />
-    counter-down 23may04v1 - Github<br />&nbsp;
+    counter-down 23may05v1 - Github<br />&nbsp;
   </footer>
 </html>

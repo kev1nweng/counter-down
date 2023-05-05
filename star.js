@@ -1,4 +1,3 @@
-window.starShown = false;
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 let stars = [];
@@ -38,9 +37,9 @@ function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < numStars; i++) {
     let star = stars[i];
-    let baseAlpha = 0.3;
+    let baseAlpha = 0.2;
     if (!alphaFrozen) {
-      alpha = baseAlpha + Math.random() * 0.2;
+      alpha = baseAlpha + Math.random() * 0.1;
     } else {
       alpha = star.alpha;
     }
@@ -110,7 +109,6 @@ let fps = 12;
 let then = Date.now();
 
 function animate() {
-  requestAnimationFrame(animate);
   let interval = 1000 / fps;
   if (brightShown) {
     fps = 30;
@@ -123,12 +121,7 @@ function animate() {
     then = now - (delta % interval);
     drawStars();
   }
-  if (!starShown) {
-    setTimeout(() => {
-      document.getElementById("stars").classList.add("visible");
-    }, 500);
-    starShown = true;
-  }
+  requestAnimationFrame(animate);
 }
 
 animate();
