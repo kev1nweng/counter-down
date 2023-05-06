@@ -39,7 +39,7 @@ function drawStars() {
     let star = stars[i];
     let baseAlpha = 0.2;
     if (!alphaFrozen) {
-      alpha = baseAlpha + Math.random() * 0.1;
+      alpha = baseAlpha + Math.random() * 0.2;
     } else {
       alpha = star.alpha;
     }
@@ -59,14 +59,6 @@ function drawStars() {
         star.x -= Math.sin((Date.now() * star.shakeRate) / 4) * 2; // Movement smoothing
       }
       star.y -= 5;
-      /* // TODO: X axis edge detection
-      if (star.x + star.radius * 2 < 0) {
-        star.x = canvas.width + star.radius * 2;
-      }
-      if (star.x + star.radius * 2 > canvas.width) {
-        star.x = 0 - star.radius * 2;
-      }
-      */
       if (star.y + star.radius * 2 < 0) {
         star.y = canvas.height + star.radius * 2;
       }
@@ -117,7 +109,7 @@ function animate() {
   }
   const now = Date.now();
   const delta = now - then;
-  if (delta > interval) {
+  if (delta >= interval) {
     then = now - (delta % interval);
     drawStars();
   }

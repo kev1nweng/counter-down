@@ -35,6 +35,7 @@
         starClicked++;
         console.log(`${starClicked}/6 taps to bright mode.`);
       }
+      /*
       function toggleMenu() {
         if (!menuShown) {
           document.getElementById("tweaksMenu").classList.add("visible");
@@ -44,6 +45,8 @@
           menuShown = false;
         }
       }
+      */
+      window.dayVersion = "v1";
     </script>
   </head>
   <body>
@@ -56,15 +59,14 @@
       </h1>
       <div id="countdown" class="glow" onclick="flag()"></div>
     </div>
+    <!--
     <div id="tweaksMenu" onclick="">
       <h1>Tweaks Menu</h1>
-      <a onclick="toggleMenu();" style="opacity: 0.5; padding-top: 300px;">CLOSE</a>
+      <a onclick="/*toggleMenu();*/" style="opacity: 0.5; padding-top: 300px"
+        >CLOSE</a
+      >
     </div>
+    -->
   </body>
-  <footer id="footer" onclick="toggleMenu();eruda.init();">
-    轻按倒计时上方文字生成一片新的星空!<br /><br />
-    <!-- English alt: Click on the quote to<br />generate a new starry sky! -->
-    by kW with love. <br />
-    counter-down 23may05v1 - Github<br />&nbsp;
-  </footer>
+  <footer id="footer" onclick="/*toggleMenu();*/eruda.init();"></footer>
 </html>

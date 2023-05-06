@@ -30,8 +30,11 @@
     color: white;
     font-weight: lighter;
     color: rgba(255, 255, 255, 0.75);
-    width: 90%;
+    width: 100%;
     z-index: 3;
+    white-space: nowrap;
+    line-clamp: 1;
+    text-overflow: ellipsis;
 }
 
 #quote.visible {
@@ -43,6 +46,7 @@
 }
 
 #countdown {
+    width: 100%;
     text-align: center;
     opacity: 0;
     transition: opacity 1s ease-in-out;
@@ -123,8 +127,7 @@
     -moz-transition: opacity 0.25s ease-in-out;
     -ms-transition: opacity 0.25s ease-in-out;
     -o-transition: opacity 0.25s ease-in-out;
-    background-color: #0000006e;
-    backdrop-filter: blur(3px);
+    background-color: #0000009a;
     pointer-events: none;
     color: white;
     align-items: center;
@@ -137,7 +140,7 @@
 }
 
 .container {
-    padding-top: 32vh;
+    margin-top: -50px;
 }
 
 .glow {
@@ -152,6 +155,10 @@ html {
 body {
     font-family: 'Cairo', 'Noto Sans SC';
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 body::before {
@@ -216,13 +223,17 @@ footer.bright {
     b {
         font-size: 2vw;
     }
+    /*
     .container {
         padding-top: 30vh;
     }
+    */
 }
 
+/*
 @media screen and (max-height: 600px) {
     .container {
         padding-top: 20vh;
     }
 }
+*/
