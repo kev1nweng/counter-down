@@ -29,7 +29,7 @@
     -o-transition: opacity 1s ease-in-out;
     color: white;
     font-weight: lighter;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.85);
     width: 100%;
     z-index: 3;
     white-space: nowrap;
@@ -87,6 +87,7 @@
     -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
     -o-transform: translateZ(0);
+    color: white;
 }
 
 #stars.visible {
@@ -195,7 +196,7 @@ footer {
     height: auto;
     line-height: .95em;
     color:white;
-    opacity: 0.1;
+    opacity: 0.2;
     transition: opacity 0.25s ease-in-out;
     -webkit-transition: opacity 0.25s ease-in-out;
     -moz-transition: opacity 0.25s ease-in-out;
@@ -211,6 +212,10 @@ footer:hover {
 footer.bright {
     color: rgb(255, 255, 255, );
     opacity: 0.35;
+}
+
+footer.hidden {
+    opacity: 0;
 }
 
 @media screen and (min-width: 900px) {

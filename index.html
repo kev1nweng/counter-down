@@ -5,52 +5,16 @@
     <!-- English alt: Countdown -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="style.css?v=23may05v1" />
-    <script defer src="script.js?v=23may05v1"></script>
-    <script defer src="star.js?v=23may05v1"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/eruda/3.0.0/eruda.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
     <script>
-      window.starClicked = 0;
-      window.brightShown = false;
-      window.menuShown = false;
-      function flag() {
-        if (brightShown) {
-          document.getElementById("brightcover").classList.remove("bright");
-          document.getElementById("footer").classList.remove("bright");
-          document.getElementById("quote").classList.remove("bright");
-          document.getElementById("countdown").classList.remove("bright");
-          brightShown = false;
-          return;
-        }
-        if (starClicked == 5) {
-          starClicked = 0;
-          document.getElementById("brightcover").classList.add("bright");
-          document.getElementById("footer").classList.add("bright");
-          document.getElementById("quote").classList.add("bright");
-          document.getElementById("countdown").classList.add("bright");
-          brightShown = true;
-          console.log("Goin' bright!");
-          return;
-        }
-        starClicked++;
-        console.log(`${starClicked}/6 taps to bright mode.`);
-      }
-      /*
-      function toggleMenu() {
-        if (!menuShown) {
-          document.getElementById("tweaksMenu").classList.add("visible");
-          menuShown = true;
-        } else {
-          document.getElementById("tweaksMenu").classList.remove("visible");
-          menuShown = false;
-        }
-      }
-      */
-      window.dayVersion = "v1";
+      document.write(`<script src="init.js?v=${new Date().getTime()}"><\/script>`);
     </script>
+    <script defer src="script.js"></script>
+    <script defer src="star.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/eruda/3.0.0/eruda.min.js"></script>
   </head>
   <body>
-    <canvas id="stars"></canvas>
+    <canvas id="stars">由于您的浏览器不支持或禁用了canvas，星空无法显示。</canvas>
     <div id="brightcover"></div>
     <div class="container">
       <h1 id="quote" class="glow" onclick="location.reload();">
@@ -68,5 +32,5 @@
     </div>
     -->
   </body>
-  <footer id="footer" onclick="/*toggleMenu();*/eruda.init();"></footer>
+  <footer id="footer" onclick="/*toggleMenu();*/eruda.init();">★ 正在为你生成星空 ★<br /><br /></footer>
 </html>

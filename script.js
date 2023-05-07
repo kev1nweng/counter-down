@@ -1,29 +1,3 @@
-window.instanceName = "counter-down";
-const monthNameStr = [
-  "jan",
-  "feb",
-  "mar",
-  "apr",
-  "may",
-  "jun",
-  "jul",
-  "aug",
-  "sep",
-  "oct",
-  "nov",
-  "dec",
-];
-const lastModifiedDate = new Date(document.lastModified);
-window.version =
-  lastModifiedDate.getYear().toString().slice(-2) +
-  monthNameStr[lastModifiedDate.getMonth()] +
-  ("0" + lastModifiedDate.getDate()).slice(-2) +
-  dayVersion;
-
-window.debugMode = false; // Manually override using web terminal when debugging
-window.counterShown = false;
-window.counterMode = 0; // 0: countdown; 1: countup; 2: special;
-
 let targetDate = new Date("November 5, 2024 00:00:00").getTime();
 
 function countDown() {
@@ -110,28 +84,20 @@ function fetchQuote(isCountdown = true) {
   quoteQuery.innerText = gotQuote;
 }
 
-function modFooter(modInstanceName, modVersion) {
-  if (modInstanceName || modVersion)
-    document.getElementById(
-      "footer"
-    ).innerHTML = `轻按倒计时上方文字生成一片新的星空!<br /><br />
-  <!-- English alt: Click on the quote to<br />generate a new starry sky! -->
-  by kW with love. <br />
-  ${modInstanceName || window.instanceName} ${
-      modVersion || window.version
-    } - Github<br />&nbsp;`;
-  else throw new Error("Empty mod");
-}
-
-function initialize() {
+function fireCountDown() {
   countDown();
   fetchQuote();
   setTimeout(() => {
     document.getElementById("quote").classList.add("visible");
   }, 2000);
   setTimeout(() => {
+    document.getElementById("footer").classList.add("hidden");
+  }, 2500);
+  setTimeout(() => {
     document.getElementById("stars").classList.add("visible");
-  }, 500);
+    modFooter(window.instanceName, window.version);
+    document.getElementById("footer").classList.remove("hidden");
+  }, 3000);
   setTimeout(() => {
     eval(
       atob(
@@ -139,7 +105,6 @@ function initialize() {
       )
     );
   }, 4000);
-  modFooter(window.instanceName, window.version);
 }
 
-initialize();
+fireCountDown();

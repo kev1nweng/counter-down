@@ -39,7 +39,7 @@ function drawStars() {
     let star = stars[i];
     let baseAlpha = 0.2;
     if (!alphaFrozen) {
-      alpha = baseAlpha + Math.random() * 0.2;
+      alpha = baseAlpha + Math.random() * 0.1;
     } else {
       alpha = star.alpha;
     }
