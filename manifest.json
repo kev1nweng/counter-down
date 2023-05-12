@@ -1,0 +1,24 @@
+{
+  "name": "counter-down",
+  "short-name": "倒计时",
+  "display": "standalone",
+  "theme_color": "#040b11",
+  "background_color": "#040b11",
+  "icons": [
+    {
+      "src": "./icons/icon256x.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon512x.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon1024x.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}

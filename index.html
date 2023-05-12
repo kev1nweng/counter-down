@@ -5,19 +5,41 @@
     <!-- English alt: Countdown -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="apple-touch-icon" href="./icons/icon256x.png" />
     <script>
-      document.write(`<script src="init.js?v=${new Date().getTime()}"><\/script>`);
+      document.write(
+        `<script src="./js/init.js?v=${new Date().getTime()}"><\/script>`
+      );
     </script>
-    <script defer src="script.js"></script>
-    <script defer src="star.js"></script>
+    <script>
+      if (navigator.serviceWorker != null) {
+        navigator.serviceWorker
+          .register("./js/sw.js")
+          .then(function (registration) {
+            console.log(
+              "[cd-sw] Service worker successfully registered at: ",
+              registration.scope
+            );
+          });
+      }
+    </script>
+    <script defer src="./js/counter.js"></script>
+    <script defer src="./js/star.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/eruda/3.0.0/eruda.min.js"></script>
   </head>
   <body>
-    <canvas id="stars">由于您的浏览器不支持或禁用了canvas，星空无法显示。</canvas>
+    <canvas id="stars"
+      >由于您的浏览器不支持或禁用了canvas，星空无法显示。</canvas
+    >
     <div id="brightcover"></div>
     <div class="container">
-      <h1 id="quote" class="glow" onclick="location.reload();">
+      <h1
+        id="quote"
+        class="glow"
+        onclick="try{eruda.init();}catch(e){console.log('Failed to initialize eruda. Check network');}"
+      >
         正在加载 Quote
         <!-- English alt: Loading quote -->
       </h1>
@@ -32,5 +54,8 @@
     </div>
     -->
   </body>
-  <footer id="footer" onclick="/*toggleMenu();*/eruda.init();">★ 正在为你生成星空 ★<br /><br /></footer>
+  <footer id="footer" onclick="location.reload()">
+    ★ 正在为你生成星空 ★<br /><br />
+  </footer>
 </html>
+<!--1-->

@@ -31,7 +31,7 @@ window.onload = resizeCanvas();
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 generateStars();
-var alphaFrozen = false;
+let alphaFrozen = false;
 
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -46,7 +46,7 @@ function drawStars() {
     if (star.y > canvas.height / 2) {
       alpha *= 1 - (star.y - canvas.height / 2) / (canvas.height / 2);
     }
-    if (brightShown) {
+    if (isBrightMode) {
       // star.x += star.vx;
       /* 
       Removing this line cuz randomized x-axis movements can cause 
@@ -64,7 +64,7 @@ function drawStars() {
       }
     }
     ctx.beginPath();
-    if (brightShown) {
+    if (isBrightMode) {
       alphaFrozen = true;
       ctx.fillStyle = `rgba(75, 141, 44, ${alpha})`;
       ctx.arc(star.x, star.y, star.radius * 2, 0, 2 * Math.PI);
@@ -72,8 +72,8 @@ function drawStars() {
       alphaFrozen = false;
       /* // Legacy: stars without glow effect
       ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-      ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
       */
+      ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
       let gradient = ctx.createRadialGradient(
         star.x,
         star.y,
@@ -102,7 +102,7 @@ let then = Date.now();
 
 function animate() {
   let interval = 1000 / fps;
-  if (brightShown) {
+  if (isBrightMode) {
     fps = 30;
   } else {
     fps = 12;

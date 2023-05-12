@@ -15,7 +15,7 @@ const monthNameStr = [
 const lastModifiedDate = new Date(document.lastModified);
 
 window.starClicked = 0;
-window.brightShown = false;
+window.isBrightMode = false;
 window.menuShown = false;
 window.debugMode = false; // Manually override using web terminal when debugging
 window.counterShown = false;
@@ -29,12 +29,12 @@ window.version =
   dayVersion;
 
 function flag() {
-  if (brightShown) {
+  if (isBrightMode) {
     document.getElementById("brightcover").classList.remove("bright");
     document.getElementById("footer").classList.remove("bright");
     document.getElementById("quote").classList.remove("bright");
     document.getElementById("countdown").classList.remove("bright");
-    brightShown = false;
+    isBrightMode = false;
     return;
   }
   if (starClicked == 5) {
@@ -43,7 +43,7 @@ function flag() {
     document.getElementById("footer").classList.add("bright");
     document.getElementById("quote").classList.add("bright");
     document.getElementById("countdown").classList.add("bright");
-    brightShown = true;
+    isBrightMode = true;
     console.log("Goin' bright!");
     return;
   }
@@ -55,7 +55,7 @@ function modFooter(modInstanceName, modVersion) {
   if (modInstanceName || modVersion)
     document.getElementById(
       "footer"
-    ).innerHTML = `轻按倒计时上方文字生成一片新的星空!<br /><br />
+    ).innerHTML = `点击此处生成一片新的星空!<br /><br />
   <!-- English alt: Click on the quote to<br />generate a new starry sky! -->
   by kW with love. <br />
   ${modInstanceName || window.instanceName} ${
