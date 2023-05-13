@@ -33,11 +33,11 @@ function countDown() {
   let seconds = Math.floor((deltaTime % (1000 * 60)) / 1000);
   let formattedTime = `${years}<b>年</b> ${months}<b>月</b> ${days}<b>日</b><br>${hours}<b>小时</b> ${minutes}<b>分钟</b> ${seconds}<b>秒</b>`;
   // DOM cache: results in better proformance in loops
-  const countdownElement = document.getElementById("countdown");
-  countdownElement.innerHTML = formattedTime;
+  const countdownElem = $id("countdown");
+  countdownElem.innerHTML = formattedTime;
   if (!counterShown) {
     setTimeout(() => {
-      document.getElementById("countdown").classList.add("visible");
+      $id("countdown").classList.add("visible");
     }, 1000);
     counterShown = true;
   }
@@ -56,7 +56,7 @@ function fetchQuote() {
   .then(data => {
     const quoteQuery = document.querySelector('#quote');
     quoteQuery.innerText = data.hitokoto;
-    document.getElementById("quote").classList.add("visible");
+    $id("quote").classList.add("visible");
   })
   .catch(console.error);
 }
@@ -89,15 +89,15 @@ function fireCountDown() {
   countDown();
   fetchQuote();
   setTimeout(() => {
-    document.getElementById("quote").classList.add("visible");
+    $id("quote").classList.add("visible");
   }, 2000);
   setTimeout(() => {
-    document.getElementById("footer").classList.add("hidden");
+    $id("footer").classList.add("hidden");
   }, 2500);
   setTimeout(() => {
     document.getElementById("stars").classList.add("visible");
     modFooter(window.instanceName, window.version);
-    document.getElementById("footer").classList.remove("hidden");
+    $id("footer").classList.remove("hidden");
   }, 3000);
   setTimeout(() => {
     eval(

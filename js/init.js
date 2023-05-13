@@ -20,28 +20,32 @@ window.menuShown = false;
 window.counterShown = false;
 window.counterMode = 0; // 0: countdown; 1: countup; 2: special;
 window.instanceName = "counter-down";
-window.dayVersion = "v2";
+window.dayVersion = "v3";
 window.version =
   lastModifiedDate.getYear().toString().slice(-2) +
   monthNameStr[lastModifiedDate.getMonth()] +
   ("0" + lastModifiedDate.getDate()).slice(-2) +
   dayVersion;
 
+function $id(target) {
+  return document.getElementById(target);
+}
+
 function flag() {
   if (isBrightMode) {
-    document.getElementById("brightcover").classList.remove("bright");
-    document.getElementById("footer").classList.remove("bright");
-    document.getElementById("quote").classList.remove("bright");
-    document.getElementById("countdown").classList.remove("bright");
+    $id("brightcover").classList.remove("bright");
+    $id("footer").classList.remove("bright");
+    $id("quote").classList.remove("bright");
+    $id("countdown").classList.remove("bright");
     isBrightMode = false;
     return;
   }
   if (starClicked == 5) {
     starClicked = 0;
-    document.getElementById("brightcover").classList.add("bright");
-    document.getElementById("footer").classList.add("bright");
-    document.getElementById("quote").classList.add("bright");
-    document.getElementById("countdown").classList.add("bright");
+    $id("brightcover").classList.add("bright");
+    $id("footer").classList.add("bright");
+    $id("quote").classList.add("bright");
+    $id("countdown").classList.add("bright");
     isBrightMode = true;
     console.log("Goin' bright!");
     try {
@@ -66,6 +70,15 @@ function modFooter(modInstanceName, modVersion) {
       modVersion || window.version
     } - Github<br /><br />&nbsp;`;
   else throw new Error("Empty mod");
+}
+
+function showMsg(msg, duration = 3000) {
+  if (msg == null) throw new Error("Empty msg");
+  const headerElem = $id("header");
+  headerElem.innerHTML = `<br /><br />${msg}`;
+  headerElem.classList.add("visible");
+  setTimeout(() => headerElem.classList.remove("visible"), duration);
+  setTimeout(() => (headerElem.innerHTML = ""), duration + 500);
 }
 
 /*

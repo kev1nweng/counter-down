@@ -29,7 +29,7 @@
     -o-transition: opacity 1s ease-in-out;
     color: white;
     font-weight: lighter;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255);
     width: 100%;
     z-index: 3;
     white-space: nowrap;
@@ -145,7 +145,7 @@
 }
 
 .glow {
-    text-shadow: 0 0 20px #ffffff79;
+    text-shadow: 0 0 20px #ffffff8a;
     -webkit-appearance: none;
 }
 
@@ -163,6 +163,7 @@ body {
     user-select: none;
     -webkit-user-select: none;
     user-zoom: none;
+    scrollbar-width: none; /* Firefox */
 }
 
 body::before {
@@ -185,6 +186,31 @@ a {
 b {
     font-size: 4vw;
     color: rgba(255, 255, 255, 0.75);
+}
+
+header {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    line-height: .95em;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+header.visible {
+    opacity: 0.5;
 }
 
 footer {
@@ -219,6 +245,10 @@ footer.bright {
 
 footer.hidden {
     opacity: 0;
+}
+
+::-webkit-scrollbar {
+    display: none; /* Chrome & Safari */
 }
 
 @media screen and (min-width: 900px) {
