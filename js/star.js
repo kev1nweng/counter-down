@@ -16,7 +16,7 @@ function generateStars() {
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       radius: Math.random() * 4,
-      alpha: Math.random() * 0.5 + 0.5,
+      alpha: Math.random() * 0.3,
       // vx: Math.random() * 0.2 - 0.1,
       vy: Math.random() * 2,
       shakeRate: 0.0025,
@@ -33,15 +33,25 @@ canvas.height = window.innerHeight;
 generateStars();
 let alphaFrozen = false;
 
+function reSpring() {
+  document.getElementById("stars").classList.remove("visible");
+  document.getElementById("quote").classList.remove("visible");
+  setTimeout(() => {
+    generateStars();
+    fetchQuote();
+    document.getElementById("stars").classList.add("visible");
+    document.getElementById("quote").classList.add("visible");
+  }, 500);
+}
+
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < numStars; i++) {
     let star = stars[i];
-    let baseAlpha = 0.2;
     if (!alphaFrozen) {
-      alpha = baseAlpha + Math.random() * 0.1;
+      alpha = star.alpha + Math.random() * 0.1;
     } else {
-      alpha = star.alpha;
+      alpha = star.alpha + 0.4;
     }
     if (star.y > canvas.height / 2) {
       alpha *= 1 - (star.y - canvas.height / 2) / (canvas.height / 2);

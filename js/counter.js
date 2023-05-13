@@ -1,4 +1,12 @@
-let targetDate = new Date("November 5, 2024 00:00:00").getTime();
+// Initialize hooks
+const hook = {
+  targetDate: null,
+  countdownMsg: null,
+  gotQuote: null,
+};
+
+let targetDate =
+  hook.targetDate || new Date("November 5, 2024 00:00:00").getTime();
 
 function countDown() {
   let now = new Date().getTime();
@@ -55,18 +63,11 @@ function fetchQuote() {
 */
 
 // Giving up base64 encryption because it's recommended to deploy from a private clone of the repo
-const countdownMsg = [
+const countdownMsg = hook.countdownMsg || [
   "You are the best!",
   "Always embrace hope...",
   "Tomorrow will always be a brand new day!",
 ];
-
-if (debugMode) {
-  countdownMsg = [
-    "",
-    // Debug msg here
-  ];
-}
 
 const countupMsg = [];
 
@@ -81,7 +82,7 @@ function fetchQuote(isCountdown = true) {
     gotQuote = countdownMsg[Math.floor(Math.random() * countdownMsg.length)];
   } else gotQuote = countupMsg[Math.floor(Math.random() * countupMsg.length)];
   const quoteQuery = document.querySelector("#quote");
-  quoteQuery.innerText = gotQuote;
+  quoteQuery.innerText = hook.gotQuote || gotQuote;
 }
 
 function fireCountDown() {

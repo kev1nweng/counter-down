@@ -17,11 +17,10 @@ const lastModifiedDate = new Date(document.lastModified);
 window.starClicked = 0;
 window.isBrightMode = false;
 window.menuShown = false;
-window.debugMode = false; // Manually override using web terminal when debugging
 window.counterShown = false;
 window.counterMode = 0; // 0: countdown; 1: countup; 2: special;
 window.instanceName = "counter-down";
-window.dayVersion = "v1";
+window.dayVersion = "v2";
 window.version =
   lastModifiedDate.getYear().toString().slice(-2) +
   monthNameStr[lastModifiedDate.getMonth()] +
@@ -45,6 +44,11 @@ function flag() {
     document.getElementById("countdown").classList.add("bright");
     isBrightMode = true;
     console.log("Goin' bright!");
+    try {
+      eruda.init();
+    } catch (e) {
+      console.log("Failed to initialize eruda. Check network");
+    }
     return;
   }
   starClicked++;
@@ -60,7 +64,7 @@ function modFooter(modInstanceName, modVersion) {
   by kW with love. <br />
   ${modInstanceName || window.instanceName} ${
       modVersion || window.version
-    } - Github<br />&nbsp;`;
+    } - Github<br /><br />&nbsp;`;
   else throw new Error("Empty mod");
 }
 
