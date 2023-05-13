@@ -12,7 +12,7 @@ function resizeCanvas() {
   canvas.style.height = `${window.innerHeight}px`;
   ctx.scale(pixelRatio, pixelRatio);
   showMsg("窗口大小或屏幕方向发生改变，建议点击底部文字重新生成星空");
-  // English alt: Window size or orientation change detected, it is recommended to regenerate the starry sky. 
+  // English alt: Window size or orientation change detected, it is recommended to regenerate the starry sky.
 }
 
 function generateStars() {
@@ -40,8 +40,8 @@ window.onload = function () {
   canvas.style.width = `${window.innerWidth}px`;
   canvas.style.height = `${window.innerHeight}px`;
   ctx.scale(pixelRatio, pixelRatio);
-  generateStars();
 };
+generateStars();
 let alphaFrozen = false;
 
 function reSpring() {
