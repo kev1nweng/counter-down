@@ -18,7 +18,7 @@ function resizeCanvas() {
 function generateStars() {
   // Initializing the array every time in case of issues when regenerating stars
   stars = [];
-  for (let i = 0; i < numStars; i++) {
+  for (let i = 0; i < (hook.numStars || numStars); i++) {
     stars.push({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,

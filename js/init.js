@@ -20,7 +20,7 @@ window.menuShown = false;
 window.counterShown = false;
 window.counterMode = 0; // 0: countdown; 1: countup; 2: special;
 window.instanceName = "counter-down";
-window.dayVersion = "v4";
+window.dayVersion = "v5";
 window.version =
   lastModifiedDate.getYear().toString().slice(-2) +
   monthNameStr[lastModifiedDate.getMonth()] +
@@ -104,6 +104,13 @@ if (verParam !== version) {
     location.protocol + "//" + location.host + location.pathname;
   location.href = `${locationRaw}?ver=${version}`;
 }
+
+// Initialize hooks
+const hook = {
+  targetDate: null,
+  countdownMsg: null,
+  numStars: null,
+};
 
 console.log(
   "   _____ ____  _    _ _   _ _______ ______ _____  \n  / ____/ __ \\| |  | | \\ | |__   __|  ____|  __ \\ \n | |   | |  | | |  | |  \\| |  | |  | |__  | |__) |\n | |   | |  | | |  | | . ` |  | |  |  __| |  _  / \n | |___| |__| | |__| | |\\  |  | |  | |____| | \\ \\ \n  \\_____\\____/_\\____/|_|_\\_|  |_|  |______|_|  \\_\\ \n          |  __ \\ / __ \\ \\        / / | | |       \n  ______  | |  | | |  | \\ \\  /\\  / /|  \\| |       \n |______| | |  | | |  | |\\ \\/  \\/ / | . ` |       \n          | |__| | |__| | \\  /\\  /  | |\\  |       \n          |_____/ \\____/   \\/  \\/   |_| \\_|    " +
