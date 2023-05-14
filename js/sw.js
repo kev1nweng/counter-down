@@ -1,4 +1,4 @@
-const cacheStorageKey = "cd-0" + new Date().getTime();
+const cacheStorageKey = "cd-2702d90faad4046f-";
 const cacheList = [
   "/index.html",
   "/style.css",

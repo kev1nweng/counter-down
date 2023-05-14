@@ -30,7 +30,7 @@ function countDown() {
   if (!counterShown) {
     setTimeout(() => {
       $id("countdown").classList.add("visible");
-    }, 1000);
+    }, 500);
     counterShown = true;
   }
   requestAnimationFrame(countDown);
@@ -84,22 +84,15 @@ function fireCountDown() {
   fetchQuote();
   setTimeout(() => {
     $id("quote").classList.add("visible");
-  }, 2000);
+  }, 1500);
   setTimeout(() => {
     $id("footer").classList.add("hidden");
-  }, 2500);
+  }, 2000);
   setTimeout(() => {
     document.getElementById("stars").classList.add("visible");
     modFooter(window.instanceName, window.version);
     $id("footer").classList.remove("hidden");
-  }, 3000);
-  setTimeout(() => {
-    eval(
-      atob(
-        "Y29uc29sZS5sb2coIlBsZWFzZSBzdGF5IGFsaXZlLi4uICVjY3V6IHUgYXJlIHRoZSBvbmUuIiwgImNvbG9yOnJnYig1OCwgMTIwLCAyNTUpOyIp"
-      )
-    );
-  }, 4000);
+  }, 2500);
 }
 
 fireCountDown();
