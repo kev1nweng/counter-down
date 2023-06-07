@@ -1,4 +1,4 @@
-let targetDate = new Date("November 5, 2024 00:00:00").getTime();
+const targetDate = new Date("November 5, 2024 00:00:00").getTime();
 
 function countDown() {
   let now = new Date().getTime();
@@ -59,6 +59,8 @@ const countdownMsg = [
   "You are the best!",
   "Always embrace hope...",
   "Tomorrow will always be a brand new day!",
+  "U got way to go!",
+  "万物皆有缝隙 - 那是光照进来的地方。"
 ];
 
 const countupMsg = [];
@@ -96,3 +98,4 @@ function fireCountDown() {
 }
 
 fireCountDown();
+// Whatever It Takes.

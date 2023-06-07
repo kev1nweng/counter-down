@@ -22,7 +22,7 @@ function generateStars() {
     stars.push({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
-      radius: Math.random() * 4.5,
+      radius: Math.random() * 3.5,
       alpha: Math.random() * 0.4,
       // vx: Math.random() * 0.2 - 0.1,
       vy: Math.random() * 2,

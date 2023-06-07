@@ -3,20 +3,26 @@
     font-family: 'Noto Sans SC';
     font-style: normal;
     src: url('./fonts/noto-sans-sc-regular.woff2') format('woff2'),
-         url('./fonts/noto-sans-sc-regular.woff') format('woff'),
-         url('./fonts/noto-sans-sc-regular.ttf') format('truetype');
+        url('./fonts/noto-sans-sc-regular.woff') format('woff'),
+        url('./fonts/noto-sans-sc-regular.ttf') format('truetype');
 }
 
-/* Cairo Regular */
+/* Rajdhani Medium */
 @font-face {
-    font-family: 'Cairo';
+    font-family: 'Rajdhani';
     font-style: normal;
-    src: url('./fonts/cairo-regular.woff2') format('woff2'),
-         url('./fonts/cairo-regular.woff') format('woff'),
-         url('./fonts/cairo-regular.ttf') format('truetype');
+    src: url('./fonts/Rajdhani-Medium-3.ttf') format('truetype');
+}
+
+/* HWZS Regular */
+@font-face {
+    font-family: 'HWZS';
+    font-style: normal;
+    src: url('./fonts/STZHONGS.TTF') format('truetype');
 }
 
 #quote {
+    font-family: 'Rajdhani', '华文中宋', 'HWZS', 'Noto Sans SC';
     margin: auto;
     padding-bottom: 20px;
     text-align: center;
@@ -154,7 +160,7 @@ html {
 }
 
 body {
-    font-family: 'Cairo', 'Noto Sans SC';
+    font-family: 'Rajdhani', 'Noto Sans SC';
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -163,7 +169,8 @@ body {
     user-select: none;
     -webkit-user-select: none;
     user-zoom: none;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 body::before {
@@ -175,7 +182,7 @@ body::before {
     height: 100%;
     z-index: -3;
     background: -webkit-linear-gradient(to top, #091625, #000000);
-    background: linear-gradient(to top, #091625, #000000); 
+    background: linear-gradient(to top, #091625, #000000);
 }
 
 a {
@@ -224,7 +231,7 @@ footer {
     align-items: center;
     height: auto;
     line-height: .95em;
-    color:white;
+    color: white;
     opacity: 0.2;
     transition: opacity 0.25s ease-in-out;
     -webkit-transition: opacity 0.25s ease-in-out;
@@ -248,19 +255,23 @@ footer.hidden {
 }
 
 ::-webkit-scrollbar {
-    display: none; /* Chrome & Safari */
+    display: none;
+    /* Chrome & Safari */
 }
 
 @media screen and (min-width: 900px) {
     #countdown {
         font-size: 7vw;
     }
+
     #quote {
         font-size: 2vw;
     }
+
     b {
         font-size: 2vw;
     }
+
     /*
     .container {
         padding-top: 30vh;
