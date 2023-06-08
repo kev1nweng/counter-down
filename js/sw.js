@@ -9,12 +9,11 @@ const cacheList = [
   "/icons/icon256x.png",
   "/icons/icon512x.png",
   "/icons/icon1024x.png",
-  "/fonts/cairo-regular.ttf",
-  "/fonts/cairo-regular.woff",
-  "/fonts/cairo-regular.woff2",
   "/fonts/noto-sans-sc-regular.ttf",
   "/fonts/noto-sans-sc-regular.woff",
   "/fonts/noto-sans-sc-regular.woff2",
+  "/fonts/STZHONGS.ttf",
+  "/fonts/Rajdhani-Medium-3.ttf",
 ];
 
 self.addEventListener("install", (e) => {

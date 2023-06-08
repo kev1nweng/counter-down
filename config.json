@@ -1,0 +1,20 @@
+{
+  "version": "1686193484831",
+  "msgArrays": {
+    "countDown": [
+      "You are the best!",
+      "Always embrace hope...",
+      "Tomorrow will always be a brand new day!",
+      "U got way to go!",
+      "万物皆有缝隙 - 那是光照进来的地方。"
+    ],
+    "countUp": ["Congrats!"],
+    "lastMinute": [
+      [
+        0,
+        1000,
+        "A message shown from 0ms to 1000ms after triggering"
+      ]
+    ]
+  }
+}

@@ -21,6 +21,7 @@ window.counterShown = false;
 window.counterMode = 0; // 0: countdown; 1: countup; 2: special;
 window.instanceName = "counter-down";
 window.dayVersion = "v1";
+window.configVersion = null;
 window.version =
   lastModifiedDate.getYear().toString().slice(-2) +
   monthNameStr[lastModifiedDate.getMonth()] +
@@ -59,8 +60,8 @@ function flag() {
   console.log(`${starClicked}/6 taps to bright mode.`);
 }
 
-function modFooter(modInstanceName, modVersion) {
-  if (modInstanceName || modVersion)
+function modFooter(modInstanceName, modVersion, configVersion) {
+  if (modInstanceName || modVersion || configVersion) {
     document.getElementById(
       "footer"
     ).innerHTML = `点击此处生成一片新的星空!<br /><br />
@@ -68,8 +69,8 @@ function modFooter(modInstanceName, modVersion) {
   by kW with love. <br />
   ${modInstanceName || window.instanceName} ${
       modVersion || window.version
-    } - Github<br /><br />&nbsp;`;
-  else throw new Error("Empty mod");
+    } - ${configVersion}<br /><br />&nbsp;`;
+  } else throw new Error("Empty mod");
 }
 
 function showMsg(msg, duration = 3000) {
@@ -79,6 +80,17 @@ function showMsg(msg, duration = 3000) {
   headerElem.classList.add("visible");
   setTimeout(() => headerElem.classList.remove("visible"), duration);
   setTimeout(() => (headerElem.innerHTML = ""), duration + 500);
+}
+
+function reSpring() {
+  document.getElementById("stars").classList.remove("visible");
+  $id("quote").classList.remove("visible");
+  fetchQuote("reSpring");
+  setTimeout(() => {
+    generateStars();
+    document.getElementById("stars").classList.add("visible");
+    $id("quote").classList.add("visible");
+  }, 500);
 }
 
 /*

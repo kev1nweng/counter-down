@@ -54,36 +54,55 @@ function fetchQuote() {
 }
 */
 
-// Giving up base64 encryption because it's recommended to deploy from a private clone of the repo
-const countdownMsg = [
-  "You are the best!",
-  "Always embrace hope...",
-  "Tomorrow will always be a brand new day!",
-  "U got way to go!",
-  "万物皆有缝隙 - 那是光照进来的地方。"
-];
+function fetchQuote(evtRaw, isCountdown = true) {
+  let countdownMsg, countupMsg;
+  jsonPath = "/config.json?timestamp=" + new Date().getTime();
+  if (evtRaw) evt = evtRaw;
+  else evt = null;
+  fetch(jsonPath)
+    .then((response) => response.json())
+    .then((data) => {
+      configVersion = data.version;
+      countdownMsg = data.msgArrays.countDown;
+      countupMsg = data.msgArrays.countUp;
+      console.log(
+        "\nFetch: " +
+          "(on " +
+          evt +
+          ") " +
+          jsonPath +
+          "\n\nconfigVersion: " +
+          configVersion +
+          "\n\ncountDownMsg: " +
+          countdownMsg +
+          "\n\ncountUpMsg: " +
+          countupMsg +
+          "\n\n"
+      );
+      let gotQuote;
+      if (isCountdown) {
+        gotQuote = (hook.countdownMsg || countdownMsg)[
+          Math.floor(Math.random() * countdownMsg.length)
+        ];
+      } else
+        gotQuote = countupMsg[Math.floor(Math.random() * countupMsg.length)];
+      setTimeout(() => {
+        modQuote(gotQuote);
+      }, 500);
+    })
+    .catch((error) => {
+      throw new Error(error);
+    });
+}
 
-const countupMsg = [];
-
-// Special text in the last minute
-const lastMinuteMsg = [
-  [0, 1000, "A message shown from 0ms to 1000ms after triggering"], // Not final data structure
-];
-
-function fetchQuote(isCountdown = true) {
-  let gotQuote;
-  if (isCountdown) {
-    gotQuote = (hook.countdownMsg || countdownMsg)[
-      Math.floor(Math.random() * countdownMsg.length)
-    ];
-  } else gotQuote = countupMsg[Math.floor(Math.random() * countupMsg.length)];
+function modQuote(msg) {
   const quoteQuery = document.querySelector("#quote");
-  quoteQuery.innerText = "「 " + gotQuote + " 」";
+  quoteQuery.innerText = "「 " + msg + " 」";
 }
 
 function fireCountDown() {
   countDown();
-  fetchQuote();
+  fetchQuote("Init");
   setTimeout(() => {
     $id("quote").classList.add("visible");
   }, 1500);
@@ -92,10 +111,10 @@ function fireCountDown() {
   }, 2000);
   setTimeout(() => {
     document.getElementById("stars").classList.add("visible");
-    modFooter(window.instanceName, window.version);
+    modFooter(window.instanceName, window.version, "cfg" + configVersion);
     $id("footer").classList.remove("hidden");
   }, 2500);
 }
 
 fireCountDown();
-// Whatever It Takes.
+// TODO: Whatever It Takes.

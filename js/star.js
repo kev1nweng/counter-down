@@ -44,17 +44,6 @@ window.onload = function () {
 generateStars();
 let alphaFrozen = false;
 
-function reSpring() {
-  document.getElementById("stars").classList.remove("visible");
-  $id("quote").classList.remove("visible");
-  setTimeout(() => {
-    generateStars();
-    fetchQuote();
-    document.getElementById("stars").classList.add("visible");
-    $id("quote").classList.add("visible");
-  }, 500);
-}
-
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < numStars; i++) {
