@@ -56,7 +56,7 @@ function fetchQuote() {
 
 function fetchQuote(evtRaw, isCountdown = true) {
   let countdownMsg, countupMsg;
-  jsonPath = "/config.json?timestamp=" + new Date().getTime();
+  jsonPath = "../config.json?timestamp=" + new Date().getTime();
   if (evtRaw) evt = evtRaw;
   else evt = null;
   fetch(jsonPath)
