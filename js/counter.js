@@ -117,4 +117,3 @@ function fireCountDown() {
 }
 
 fireCountDown();
-// TODO: Whatever It Takes.
