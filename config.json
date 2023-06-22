@@ -1,14 +1,18 @@
 {
-  "version": "1686193484831",
+  "version": "1687402385734",
   "msgArrays": {
     "countDown": [
       "You are the best!",
       "Always embrace hope...",
       "Tomorrow will always be a brand new day!",
       "U got way to go!",
-      "万物皆有缝隙 - 那是光照进来的地方。"
+      "万物皆有缝隙 - 那是光照进来的地方。",
+      "没有什么事情是不可能的，只要你敢去尝试。",
+      "相信自己，你拥有改变世界的力量。"
     ],
-    "countUp": ["Congrats!"],
+    "countUp": [
+      "Congrats!"
+    ],
     "lastMinute": [
       [
         0,

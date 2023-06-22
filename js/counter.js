@@ -55,44 +55,56 @@ function fetchQuote() {
 */
 
 function fetchQuote(evtRaw, isCountdown = true) {
-  let countdownMsg, countupMsg;
-  jsonPath = "./config.json?timestamp=" + new Date().getTime();
+  const jsonPath = "./config.json?timestamp=" + new Date().getTime();
   if (evtRaw) evt = evtRaw;
   else evt = null;
-  fetch(jsonPath)
-    .then((response) => response.json())
-    .then((data) => {
-      configVersion = data.version;
-      countdownMsg = data.msgArrays.countDown;
-      countupMsg = data.msgArrays.countUp;
-      console.log(
-        "\nFetch: " +
-          "(on " +
-          evt +
-          ") " +
-          jsonPath +
-          "\n\nconfigVersion: " +
-          configVersion +
-          "\n\ncountDownMsg: " +
-          countdownMsg +
-          "\n\ncountUpMsg: " +
-          countupMsg +
-          "\n\n"
-      );
-      let gotQuote;
-      if (isCountdown) {
-        gotQuote = (hook.countdownMsg || countdownMsg)[
-          Math.floor(Math.random() * countdownMsg.length)
-        ];
-      } else
-        gotQuote = countupMsg[Math.floor(Math.random() * countupMsg.length)];
-      setTimeout(() => {
-        modQuote(gotQuote);
-      }, 500);
-    })
-    .catch((error) => {
-      throw new Error(error);
-    });
+  if (!configFetched) {
+    fetch(jsonPath)
+      .then((response) => response.json())
+      .then((data) => {
+        configVersion = data.version;
+        window.countdownMsg = data.msgArrays.countDown;
+        window.countupMsg = data.msgArrays.countUp;
+        console.log(
+          "\nFetch: " +
+            "(on " +
+            evt +
+            ") " +
+            jsonPath +
+            "\n\nconfigVersion: " +
+            configVersion +
+            "\n\ncountDownMsg: " +
+            countdownMsg +
+            "\n\ncountUpMsg: " +
+            countupMsg +
+            "\n\n"
+        );
+        window.configFetched = true
+        let gotQuote;
+        if (isCountdown) {
+          gotQuote = (hook.countdownMsg || countdownMsg)[
+            Math.floor(Math.random() * countdownMsg.length)
+          ];
+        } else
+          gotQuote = countupMsg[Math.floor(Math.random() * countupMsg.length)];
+        setTimeout(() => {
+          modQuote(gotQuote);
+        }, 500);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } else {
+    let gotQuote;
+    if (isCountdown) {
+      gotQuote = (hook.countdownMsg || countdownMsg)[
+        Math.floor(Math.random() * countdownMsg.length)
+      ];
+    } else gotQuote = countupMsg[Math.floor(Math.random() * countupMsg.length)];
+    setTimeout(() => {
+      modQuote(gotQuote);
+    }, 500);
+  }
 }
 
 function modQuote(msg) {
@@ -101,7 +113,7 @@ function modQuote(msg) {
 }
 
 function fireCountDown() {
-  countDown();
+  if (targetDate) countDown();
   fetchQuote("Init");
   setTimeout(() => {
     $id("quote").classList.add("visible");

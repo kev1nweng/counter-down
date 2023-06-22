@@ -1,8 +1,9 @@
-const cacheStorageKey = "cd-2702d90faad4046f-";
+const cacheStorageKey = "cd-230622v1-";
 const cacheList = [
   "/index.html",
   "/style.css",
   "/manifest.json",
+  "/config.json",
   "/js/counter.js",
   "/js/star.js",
   "/favicon.ico",

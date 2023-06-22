@@ -22,6 +22,7 @@ window.counterMode = 0; // 0: countdown; 1: countup; 2: special;
 window.instanceName = "counter-down";
 window.dayVersion = "v1";
 window.configVersion = null;
+window.configFetched = false;
 window.version =
   lastModifiedDate.getYear().toString().slice(-2) +
   monthNameStr[lastModifiedDate.getMonth()] +
