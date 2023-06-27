@@ -36,10 +36,12 @@ function countDown() {
   requestAnimationFrame(countDown);
 }
 
-// TODO
-function theLastMinute(name) {
-  return name;
-}
+const theLastMinute = {
+  customName: "targetName",
+  payload: function () {
+    console.log(this.customName);
+  },
+};
 
 /* Abandoned: Online quote (hitokoto)
 function fetchQuote() {
@@ -79,7 +81,7 @@ function fetchQuote(evtRaw, isCountdown = true) {
             countupMsg +
             "\n\n"
         );
-        window.configFetched = true
+        window.configFetched = true;
         let gotQuote;
         if (isCountdown) {
           gotQuote = (hook.countdownMsg || countdownMsg)[
