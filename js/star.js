@@ -23,7 +23,7 @@ function generateStars() {
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
       radius: Math.random() * 3.5,
-      alpha: Math.random() * 0.4,
+      alpha: Math.random() * 0.5,
       // vx: Math.random() * 0.2 - 0.1,
       vy: Math.random() * 2,
       shakeRate: 0.0025,
@@ -50,7 +50,7 @@ function drawStars() {
     let star = stars[i];
     let alpha;
     if (!alphaFrozen) {
-      alpha = star.alpha + Math.random() * star.alpha * 0.5;
+      alpha = star.alpha - Math.random() * star.alpha * 0.2;
     } else {
       alpha = star.alpha + 0.4;
     }

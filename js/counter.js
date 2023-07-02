@@ -6,6 +6,15 @@ window.elems = {
   quote: $id("quote"),
 };
 
+const debug = function () {
+  window.debug = true;
+};
+
+function getDebugDate() {
+  window.gotDebugDate = true;
+  return new Date().getTime() + 70000;
+}
+
 function countDown() {
   let now = new Date().getTime();
   let deltaTime;
@@ -16,26 +25,34 @@ function countDown() {
   } else {
     return;
   }
+  if (window.debug) {
+    if (!window.gotDebugDate) hook.targetDate = getDebugDate();
+  }
   if (deltaTime <= 0) counterMode = 1;
-  let years = Math.floor(deltaTime / (1000 * 60 * 60 * 24 * 365));
-  let months = Math.floor(
-    (deltaTime % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)
-  );
-  let days = Math.floor(
-    (deltaTime % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
-  );
-  let hours = Math.floor(
-    (deltaTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  let minutes = Math.floor((deltaTime % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((deltaTime % (1000 * 60)) / 1000);
-  let formattedTime = `${years}<b>年</b> ${months}<b>月</b> ${days}<b>日</b><br>${hours}<b>小时</b> ${minutes}<b>分钟</b> ${seconds}<b>秒</b>`;
-  window.elems.countdown.innerHTML = formattedTime;
+  const remainingTime = {
+    raw: deltaTime,
+    years: Math.floor(deltaTime / (1000 * 60 * 60 * 24 * 365)),
+    months: Math.floor(
+      (deltaTime % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)
+    ),
+    days: Math.floor(
+      (deltaTime % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
+    ),
+    hours: Math.floor((deltaTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+    minutes: Math.floor((deltaTime % (1000 * 60 * 60)) / (1000 * 60)),
+    seconds: Math.floor((deltaTime % (1000 * 60)) / 1000),
+    milliseconds: deltaTime % 1000,
+  };
+  let formattedTime = `${remainingTime.years}<b>年</b> ${remainingTime.months}<b>月</b> ${remainingTime.days}<b>日</b><br>${remainingTime.hours}<b>小时</b> ${remainingTime.minutes}<b>分钟</b> ${remainingTime.seconds}<b>秒</b>`;
+  window.elems.countdown.innerHTML = hook.formattedTime || formattedTime;
   if (!counterShown) {
     setTimeout(() => {
       $id("countdown").classList.add("visible");
     }, 500);
     counterShown = true;
+  }
+  if (deltaTime <= 65000 && deltaTime >= -10000) {
+    theLastMinute.payload(remainingTime);
   }
   requestAnimationFrame(countDown);
 }
