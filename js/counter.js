@@ -1,8 +1,10 @@
 const targetDate = new Date("November 5, 2024 00:00:00").getTime();
 
 // DOM cache: results in better proformance in loops
-const countdownElem = $id("countdown");
-const quoteElem = $id("quote")
+window.elems = {
+  countdown: $id("countdown"),
+  quote: $id("quote"),
+};
 
 function countDown() {
   let now = new Date().getTime();
@@ -28,7 +30,7 @@ function countDown() {
   let minutes = Math.floor((deltaTime % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((deltaTime % (1000 * 60)) / 1000);
   let formattedTime = `${years}<b>年</b> ${months}<b>月</b> ${days}<b>日</b><br>${hours}<b>小时</b> ${minutes}<b>分钟</b> ${seconds}<b>秒</b>`;
-  countdownElem.innerHTML = formattedTime;
+  window.elems.countdown.innerHTML = formattedTime;
   if (!counterShown) {
     setTimeout(() => {
       $id("countdown").classList.add("visible");
